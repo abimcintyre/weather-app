@@ -34,9 +34,18 @@ function displayWeather(response) {
   );
 }
 
-function displayIcon(response) {}
+function search(city) {
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=1276dbfdft169fo302ba35426e760566&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
+}
 
-let city = "Perth";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=1276dbfdft169fo302ba35426e760566&units=metric`;
+function submitSearch(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
 
-axios.get(apiUrl).then(displayWeather);
+search("New York");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", submitSearch);
