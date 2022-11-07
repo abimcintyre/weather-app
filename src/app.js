@@ -30,7 +30,7 @@ function displayWeather(response) {
   let icon = document.querySelector("#icon");
   icon.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
 }
 
