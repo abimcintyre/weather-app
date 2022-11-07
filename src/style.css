@@ -37,3 +37,8 @@ small {
 strong {
   font-size: 35px;
 }
+
+.units {
+  font-size: 20px;
+  margin-left: 5px;
+}
