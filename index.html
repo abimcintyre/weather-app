@@ -11,15 +11,16 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="container">
       <div class="weather-app">
-        <h1>New York</h1>
+        <h1 id="city">New York</h1>
         <ul>
           <li>Friday 05:00</li>
-          <li>Heavy Rain</li>
+          <li id="info">Heavy Rain</li>
           <br />
         </ul>
         <div class="row">
@@ -28,13 +29,12 @@
               src="https://ssl.gstatic.com/onebox/weather/64/rain_heavy.png"
               alt="Heavy Rain"
             />
-            <strong>12°C</strong>
+            <strong id="temp">12</strong><strong>°C</strong>
           </div>
           <div class="col-6">
             <ul>
-              <li>Precipitation: 0%</li>
-              <li>Humidity: 50%</li>
-              <li>Wind: 2 km/h</li>
+              <li>Humidity: <span id="humid">50</span>%</li>
+              <li>Wind: <span id="wind">2</span>km/h</li>
             </ul>
           </div>
         </div>

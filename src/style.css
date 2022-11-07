@@ -25,6 +25,7 @@ ul {
 
 li {
   list-style: none;
+  text-transform: capitalize;
 }
 
 small {
