@@ -32,6 +32,7 @@ function displayWeather(response) {
     "src",
     `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
+  celsiusTemp = response.data.temperature.current;
 }
 
 function search(city) {
@@ -45,7 +46,28 @@ function submitSearch(event) {
   search(cityInputElement.value);
 }
 
+function displayFaren(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temp");
+  let farenTemp = (celsiusTemp * 9) / 5 + 32;
+  temperature.innerHTML = Math.round(farenTemp);
+}
+
+function displayCels(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temp");
+  temperature.innerHTML = Math.round(celsiusTemp);
+}
+
 search("New York");
+
+let celsiusTemp = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submitSearch);
+
+let faren = document.querySelector("#faren");
+faren.addEventListener("click", displayFaren);
+
+let cels = document.querySelector("#cels");
+cels.addEventListener("click", displayCels);
