@@ -27,8 +27,16 @@ function displayWeather(response) {
   wind.innerHTML = Math.round(response.data.wind.speed);
   let date = document.querySelector("#date");
   date.innerHTML = formatDate(response.data.time * 1000);
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
 }
 
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Lisbon&key=1276dbfdft169fo302ba35426e760566&units=metric`;
+function displayIcon(response) {}
+
+let city = "Perth";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=1276dbfdft169fo302ba35426e760566&units=metric`;
 
 axios.get(apiUrl).then(displayWeather);
