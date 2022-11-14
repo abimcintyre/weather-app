@@ -13,6 +13,34 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col-2">
+              <div class="weekday">${day}</div>
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/48/rain_light.png"
+                alt=""
+                width="35px"
+              />
+              <br />
+              <div class="forecast-temp">
+                <span class="forecast-temp-max">14°</span>
+                <span class="forecast-temp-min">10°</span>
+              </div>
+            </div>
+           `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayWeather(response) {
   console.log(response.data);
   let temperature = document.querySelector("#temp");
@@ -60,6 +88,7 @@ function displayCels(event) {
 }
 
 search("Ryde");
+displayForecast();
 
 let celsiusTemp = null;
 
