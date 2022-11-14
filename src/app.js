@@ -59,7 +59,7 @@ function displayCels(event) {
   temperature.innerHTML = Math.round(celsiusTemp);
 }
 
-search("New York");
+search("Ryde");
 
 let celsiusTemp = null;
 

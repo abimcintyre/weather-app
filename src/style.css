@@ -42,3 +42,21 @@ strong {
   font-size: 20px;
   margin-left: 5px;
 }
+
+.forecast {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.weekday {
+  font-size: 25px;
+}
+
+.forecast-temp-min {
+  color: #adadad;
+}
+
+.forecast-temp {
+  font-size: 15px;
+  margin-top: 6px;
+}
