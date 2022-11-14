@@ -13,9 +13,9 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   days.forEach(function (day) {
@@ -41,6 +41,12 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=1276dbfdft169fo302ba35426e760566&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeather(response) {
   console.log(response.data);
   let temperature = document.querySelector("#temp");
@@ -61,6 +67,8 @@ function displayWeather(response) {
     `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   celsiusTemp = response.data.temperature.current;
+
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -88,7 +96,6 @@ function displayCels(event) {
 }
 
 search("Ryde");
-displayForecast();
 
 let celsiusTemp = null;
 
