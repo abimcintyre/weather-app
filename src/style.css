@@ -3,7 +3,7 @@ body {
   background-color: #dbeef2;
 }
 .weather-app {
-  max-width: 600px;
+  max-width: 700px;
   margin: 50px auto;
   margin-bottom: 20px;
   padding: 30px;
@@ -58,5 +58,5 @@ strong {
 
 .forecast-temp {
   font-size: 15px;
-  margin-top: 6px;
+  margin-top: 8px;
 }

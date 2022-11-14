@@ -13,27 +13,43 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
+
   let forecastHTML = `<div class="row">`;
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
               <div class="col-2">
-              <div class="weekday">${day}</div>
+              <div class="weekday">${formatDay(forecastDay.time)}</div>
               <img
-                src="https://ssl.gstatic.com/onebox/weather/48/rain_light.png"
+                src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                  forecastDay.condition.icon
+                }.png"
                 alt=""
                 width="35px"
               />
               <br />
               <div class="forecast-temp">
-                <span class="forecast-temp-max">14°</span>
-                <span class="forecast-temp-min">10°</span>
-              </div>
+                <span class="forecast-temp-max">${
+                  forecastDay.temperature.maximum
+                }°</span>
+                <span class="forecast-temp-min">${
+                  forecastDay.temperature.minimum
+                }°</span>
+                 </div>
             </div>
            `;
   });
@@ -45,6 +61,7 @@ function getForecast(coordinates) {
   console.log(coordinates);
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=1276dbfdft169fo302ba35426e760566&units=metric`;
   axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
 }
 
 function displayWeather(response) {
